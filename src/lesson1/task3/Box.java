@@ -29,11 +29,9 @@ public class Box<T extends Fruit>{
         return this.objectsArrayList.size() * this.objectType.getWeight();
     }
 
-    public Box<T> transferToAnotherBox (Box<T> box){
-        Box<T> newBox = new Box<>(this.objectType);
+    public void transferToAnotherBox(Box<T> box, Box<T> newBox){
         newBox.objectsArrayList.addAll(box.objectsArrayList);
         box.objectsArrayList.clear();
-        return newBox;
     }
 
     public boolean compareTo(Box<?> box) {

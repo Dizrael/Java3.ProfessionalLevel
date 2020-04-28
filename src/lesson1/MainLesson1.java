@@ -40,7 +40,8 @@ public class MainLesson1 {
         System.out.println("Вес коробки с 10ю яблоками: " + appleBox.getWeight());
 
         System.out.println("Пересыпем яблоки в другую коробку...");
-        Box<Apple> newAppleBox = appleBox.transferToAnotherBox(new Box<>(new Apple()));
+        Box<Apple> newAppleBox = new Box<>(new Apple());
+        newAppleBox.transferToAnotherBox(appleBox, newAppleBox);
 
         System.out.println("Вес старой коробки яблок: " + appleBox.getWeight()
                               + "\nВес новой коробки: " + newAppleBox.getWeight());
