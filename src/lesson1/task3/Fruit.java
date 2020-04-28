@@ -1,10 +1,7 @@
 package lesson1.task3;
 
-public class Fruit {
+public abstract class Fruit {
     private static float weight;
 
-    static float getWeight() {
-        return weight;
-    }
-
+    public abstract float getWeight();
 }

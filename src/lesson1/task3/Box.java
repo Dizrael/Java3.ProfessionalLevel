@@ -5,38 +5,38 @@ import java.util.Arrays;
 
 public class Box<T extends Fruit>{
 
-    private ArrayList<T> box = new ArrayList<>();
-
-    public Box() {
-
+    private ArrayList<T> objectsArrayList = new ArrayList<>();
+    private T objectType;
+    public Box(T objectType) {
+        this.objectType = objectType;
     }
 
     public void putSomething(T obj, int quantity){
-//        if (!this.getClass().equals(obj.getClass())){
-//            System.err.println("Классы объектов не совместимы!");
-//            return;
-//        }
+        if (!this.objectType.getClass().equals(obj.getClass())){
+            System.err.println("Классы объектов не совместимы!");
+            return;
+        }
         for (int i = 0; i < quantity; i++) {
-            this.box.add(obj);
+            this.objectsArrayList.add(obj);
         }
     }
 
     public void putSomething(T[] objArr){
-        this.box.addAll(Arrays.asList(objArr));
+        this.objectsArrayList.addAll(Arrays.asList(objArr));
     }
 
     public float getWeight(){
-        return this.box.size()/T.getWeight();
+        return this.objectsArrayList.size() * this.objectType.getWeight();
     }
 
     public Box<T> transferToAnotherBox (Box<T> box){
-        Box<T> newBox = new Box<>();
-        newBox.box.addAll(box.box);
-        box.box.clear();
+        Box<T> newBox = new Box<>(this.objectType);
+        newBox.objectsArrayList.addAll(box.objectsArrayList);
+        box.objectsArrayList.clear();
         return newBox;
     }
 
-    public boolean compareTo(Box<T> box) {
+    public boolean compareTo(Box<?> box) {
         return this.getWeight() == box.getWeight();
     }
 }
